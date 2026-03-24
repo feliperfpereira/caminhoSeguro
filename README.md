@@ -2,6 +2,18 @@
 
 Aplicação web para sugerir trajetos urbanos com base em rotas do Google Maps e em um histórico de ocorrências da SSP-SP, ajudando o usuário a escolher o caminho com menor exposição registrada.
 
+## Origem do projeto
+
+Este projeto foi desenvolvido durante o hackathon Build with TRAE @Brasil São Paulo, realizado em 22/03/2026.
+
+Participantes:
+
+- Felipe Fonseca: https://www.linkedin.com/in/feliperfonseca/
+- Cesar Bahiense Porto: https://www.linkedin.com/in/cesar-bahiense-porto/
+- Raphaela Medeiros Costa: https://www.linkedin.com/in/raphaelamedeiroscosta/
+
+Link do evento: https://luma.com/eidos6qb?locale=pt
+
 ## Visão geral
 
 O Caminho Seguro permite:
