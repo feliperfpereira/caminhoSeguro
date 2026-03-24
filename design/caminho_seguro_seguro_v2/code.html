@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400;1,600&amp;family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary": "#b62135",
+              "on-secondary": "#ffffff",
+              "surface-container-highest": "#e2e2e4",
+              "on-primary-container": "#83829b",
+              "surface-variant": "#e2e2e4",
+              "outline-variant": "#c8c5cd",
+              "on-error": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#600012",
+              "secondary-container": "#ff5964",
+              "error": "#ba1a1a",
+              "on-primary-fixed": "#1a1a2e",
+              "tertiary-fixed": "#70f8e8",
+              "on-primary-fixed-variant": "#45455b",
+              "on-tertiary-fixed": "#00201d",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#2f3132",
+              "secondary-fixed": "#ffdad9",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#920021",
+              "surface": "#f9f9fb",
+              "tertiary": "#000202",
+              "surface-container-high": "#e8e8ea",
+              "tertiary-container": "#00211e",
+              "surface-container": "#eeeef0",
+              "outline": "#78767d",
+              "inverse-primary": "#c6c4df",
+              "surface-tint": "#5d5c74",
+              "on-background": "#1a1c1d",
+              "primary": "#00000b",
+              "tertiary-fixed-dim": "#4fdbcc",
+              "inverse-on-surface": "#f0f0f2",
+              "primary-fixed-dim": "#c6c4df",
+              "primary-container": "#1a1a2e",
+              "surface-dim": "#d9dadc",
+              "on-tertiary-fixed-variant": "#005049",
+              "on-secondary-fixed": "#400009",
+              "surface-container-low": "#f3f3f5",
+              "surface-bright": "#f9f9fb",
+              "on-tertiary-container": "#009589",
+              "error-container": "#ffdad6",
+              "primary-fixed": "#e2e0fc",
+              "secondary-fixed-dim": "#ffb3b3",
+              "on-surface": "#1a1c1d",
+              "on-error-container": "#93000a",
+              "background": "#f9f9fb",
+              "on-surface-variant": "#47464c"
+            },
+            fontFamily: {
+              "headline": ["Newsreader"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .editorial-shadow {
+        box-shadow: 0 12px 40px 0 rgba(26, 28, 29, 0.06);
+      }
+      .bg-glass {
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+      }
+      .bg-gradient-primary {
+        background: linear-gradient(135deg, #00000b 0%, #1a1a2e 100%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-[#f9f9fb] dark:bg-slate-950 sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#1A1A2E] dark:text-slate-100" data-icon="accessibility_new">accessibility_new</span>
+<h1 class="font-['Newsreader'] text-2xl font-semibold italic text-[#1A1A2E] dark:text-white tracking-tight">Caminho Seguro</h1>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label text-sm font-bold uppercase tracking-wider text-[#1A1A2E] dark:text-white hover:opacity-80 transition-opacity" href="#">Início</a>
+<a class="font-label text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 hover:opacity-80 transition-opacity" href="#">Salvos</a>
+<a class="font-label text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 hover:opacity-80 transition-opacity" href="#">Alertas</a>
+<a class="font-label text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 hover:opacity-80 transition-opacity" href="#">Perfil</a>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center px-6 py-12 max-w-4xl mx-auto w-full">
+<!-- Empty State Illustration & Content Block -->
+<div class="w-full space-y-12">
+<!-- Asymmetric Illustration Block -->
+<div class="relative w-full h-80 md:h-96 rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center">
+<div class="absolute inset-0 opacity-20">
+<div class="absolute top-0 left-0 w-64 h-64 bg-primary-container rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 right-0 w-96 h-96 bg-tertiary-fixed-dim rounded-full translate-x-1/4 translate-y-1/4"></div>
+</div>
+<!-- Geometric Sentinel Graphic -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-32 h-32 md:w-40 md:h-40 relative">
+<div class="absolute inset-0 border-2 border-primary-container/20 rounded-full scale-125"></div>
+<div class="absolute inset-0 border-2 border-tertiary-fixed/40 rounded-full scale-110"></div>
+<div class="w-full h-full bg-gradient-primary rounded-full flex items-center justify-center editorial-shadow">
+<span class="material-symbols-outlined text-tertiary-fixed text-5xl" data-icon="shield_moon" style="font-variation-settings: 'FILL' 1;">shield_moon</span>
+</div>
+</div>
+</div>
+<!-- Abstract Floating Elements -->
+<div class="absolute top-1/4 right-1/4 w-4 h-4 rounded-full bg-tertiary-fixed-dim"></div>
+<div class="absolute bottom-1/3 left-1/4 w-3 h-3 rounded-full bg-primary-container"></div>
+</div>
+<!-- Typography Content Section -->
+<div class="text-center max-w-2xl mx-auto space-y-6">
+<h2 class="font-headline text-4xl md:text-5xl font-semibold italic text-primary leading-tight">
+                    Percurso sem histórico relevante
+                </h2>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed">
+                    Nossa análise atual não detectou recorrências significativas ou padrões de incidentes nesta rota nas últimas semanas. O ambiente permanece estável.
+                </p>
+<!-- Critical Disclaimer Box -->
+<div class="inline-flex items-center gap-3 bg-surface-container-high px-6 py-3 rounded-full">
+<span class="material-symbols-outlined text-secondary text-xl" data-icon="info">info</span>
+<span class="font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant">
+                        Isso não significa ausência de risco — significa ausência de padrão registrado
+                    </span>
+</div>
+</div>
+<!-- Action Cluster: Bento Style Interaction -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+<button class="group flex items-center justify-between p-6 bg-surface-container-lowest border border-outline-variant/15 rounded-xl editorial-shadow hover:bg-surface-container transition-all text-left">
+<div class="space-y-1">
+<span class="font-headline text-xl font-semibold italic block">Ver pontos de apoio</span>
+<span class="font-body text-sm text-on-surface-variant">Delegacias, totens e locais iluminados</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+</button>
+<button class="group flex items-center justify-between p-6 bg-surface-container-lowest border border-outline-variant/15 rounded-xl editorial-shadow hover:bg-surface-container transition-all text-left">
+<div class="space-y-1">
+<span class="font-headline text-xl font-semibold italic block">Ver dados do bairro</span>
+<span class="font-body text-sm text-on-surface-variant">Estatísticas de segurança local</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+</div>
+</button>
+</div>
+<!-- Bottom CTA -->
+<div class="flex justify-center pt-8">
+<button class="bg-gradient-primary text-white font-label font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-xl editorial-shadow active:scale-95 transition-transform flex items-center gap-3">
+                    Confirmar Percurso
+                    <span class="material-symbols-outlined text-tertiary-fixed" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-[#1A1A2E]/80 backdrop-blur-xl rounded-t-[3rem] shadow-[0_-12px_40px_0_rgba(26,28,29,0.06)]">
+<!-- Início (Active) -->
+<a class="flex flex-col items-center justify-center bg-[#1A1A2E] dark:bg-[#70f8e8] text-white dark:text-[#1A1A2E] rounded-full px-5 py-2 transition-all duration-300 scale-90 active:duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-wider">Início</span>
+</a>
+<!-- Salvos -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-[#ff5964] transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="bookmark">bookmark</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-wider">Salvos</span>
+</a>
+<!-- Alertas -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-[#ff5964] transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="warning">warning</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-wider">Alertas</span>
+</a>
+<!-- Perfil -->
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-[#ff5964] transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-wider">Perfil</span>
+</a>
+</nav>
+<!-- Map Contextual FAB (Suppressed on this info screen per rules, but included if user were on map) -->
+<!-- Suppression logic: This is a task-focused status screen, hence no FAB -->
+</body></html>

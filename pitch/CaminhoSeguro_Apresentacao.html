@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caminho Seguro — Apresentação</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dark:    #1A1A2E;
+  --dark2:   #16213E;
+  --teal:    #2EC4B6;
+  --teal2:   #22A99D;
+  --coral:   #E84855;
+  --amber:   #FF9F1C;
+  --surface: #F4F6F5;
+  --surface2:#E8EDEC;
+  --text:    #1C1C1E;
+  --muted:   #6E7B7A;
+  --border:  rgba(46,196,182,0.15);
+  --white:   #FFFFFF;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── SLIDES ── */
+.slide {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 72px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── SLIDE 1 — CAPA ── */
+.slide-cover {
+  background: var(--dark);
+  color: white;
+}
+.slide-cover::before {
+  content: '';
+  position: absolute;
+  top: -160px; right: -160px;
+  width: 560px; height: 560px;
+  border-radius: 50%;
+  border: 1px solid rgba(46,196,182,0.12);
+}
+.slide-cover::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; left: 30%;
+  width: 380px; height: 380px;
+  border-radius: 50%;
+  border: 1px solid rgba(46,196,182,0.07);
+}
+
+.app-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(46,196,182,0.12);
+  border: 1px solid rgba(46,196,182,0.3);
+  border-radius: 40px;
+  padding: 6px 16px 6px 8px;
+  margin-bottom: 36px;
+}
+.app-icon {
+  width: 28px; height: 28px;
+  background: var(--teal);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.app-icon svg { width: 16px; height: 16px; }
+.app-badge span {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--teal);
+  letter-spacing: 0.04em;
+}
+
+.cover-title {
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  color: white;
+}
+.cover-title strong {
+  font-weight: 600;
+  color: var(--teal);
+}
+.cover-sub {
+  font-size: clamp(16px, 2vw, 20px);
+  color: rgba(255,255,255,0.45);
+  font-weight: 300;
+  margin-bottom: 56px;
+  max-width: 540px;
+}
+
+.cover-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.pill {
+  font-size: 12px;
+  font-weight: 400;
+  padding: 6px 16px;
+  border-radius: 40px;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.5);
+}
+
+.slide-num {
+  position: absolute;
+  bottom: 40px; right: 80px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.2);
+  font-weight: 500;
+}
+.slide-num-dark {
+  position: absolute;
+  bottom: 40px; right: 80px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: rgba(0,0,0,0.18);
+  font-weight: 500;
+}
+
+/* ── SLIDE LIGHT ── */
+.slide-light {
+  background: var(--white);
+}
+.slide-surface {
+  background: var(--surface);
+}
+
+/* ── SECTION TAG ── */
+.stag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal2);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.stag::before {
+  content: '';
+  display: block;
+  width: 20px; height: 2px;
+  background: var(--teal);
+  border-radius: 1px;
+}
+
+.slide-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  color: var(--dark);
+}
+.slide-title strong { font-weight: 600; color: var(--dark); }
+.slide-title em { font-style: italic; font-weight: 300; color: var(--teal2); }
+
+.slide-lead {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 560px;
+  margin-bottom: 40px;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+/* ── CARDS ── */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+.grid4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; }
+
+.card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid var(--border);
+}
+.card-dark {
+  background: rgba(255,255,255,0.04);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(46,196,182,0.1);
+}
+.card h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+.card-dark h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+}
+.card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.card-dark p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+.card-accent {
+  width: 32px; height: 3px;
+  border-radius: 2px;
+  margin-bottom: 14px;
+}
+
+/* ── REDDIT FRAME ── */
+.reddit-frame {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+  position: relative;
+}
+.reddit-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.reddit-dot {
+  width: 14px; height: 14px;
+  background: #FF4500;
+  border-radius: 50%;
+  display: inline-block;
+}
+.reddit-post-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+.reddit-post-body {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.reddit-img {
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 280px;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+}
+.reddit-img img { width: 100%; display: block; }
+.reddit-insight {
+  font-size: 12px;
+  color: var(--teal2);
+  font-style: italic;
+  border-left: 2px solid var(--teal);
+  padding-left: 12px;
+  line-height: 1.55;
+}
+
+/* ── FLOW ── */
+.flow {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 32px 0;
+}
+.flow-step {
+  flex: 1;
+  background: var(--white);
+  border-radius: 14px;
+  padding: 20px 16px;
+  text-align: center;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.flow-step .fi { font-size: 22px; margin-bottom: 8px; }
+.flow-step .fn {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal2);
+  margin-bottom: 4px;
+}
+.flow-step .fl { font-size: 13px; font-weight: 500; color: var(--dark); }
+.flow-step .fs { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+.flow-arr {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  color: var(--teal);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* ── COMPARE ── */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 32px;
+}
+.compare-col {
+  border-radius: 16px;
+  padding: 24px;
+}
+.compare-bad  { background: rgba(232,72,85,0.05); border: 1px solid rgba(232,72,85,0.15); }
+.compare-good { background: rgba(46,196,182,0.06); border: 1px solid rgba(46,196,182,0.2); }
+.compare-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.compare-bad  .compare-label { color: #A32020; }
+.compare-good .compare-label { color: var(--teal2); }
+.compare-dot { width: 8px; height: 8px; border-radius: 50%; }
+.compare-bad  .compare-dot { background: var(--coral); }
+.compare-good .compare-dot { background: var(--teal); }
+.compare-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.compare-item:last-child { margin-bottom: 0; }
+.ci { font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+
+/* ── PRINCIPLE ── */
+.principle-list { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
+.principle {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 18px 20px;
+  background: var(--white);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+.pnum {
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--teal);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 32px;
+  margin-top: 2px;
+}
+.principle h4 { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 3px; }
+.principle p  { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.5; }
+
+/* ── STAT ── */
+.stat-row { display: flex; gap: 16px; margin-top: 32px; }
+.stat {
+  flex: 1;
+  background: var(--dark);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+}
+.stat .sn {
+  font-size: 38px;
+  font-weight: 300;
+  color: white;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat .sn em { color: var(--teal); font-style: normal; font-size: 20px; }
+.stat .sd { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+/* ── ROADMAP ── */
+.roadmap { margin-top: 36px; }
+.rm-item {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 28px;
+  position: relative;
+}
+.rm-item::before {
+  content: '';
+  position: absolute;
+  left: 19px; top: 42px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+.rm-item:last-child::before { display: none; }
+.rm-dot {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--dark);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  flex-shrink: 0;
+}
+.rm-dot.teal { background: var(--teal); color: var(--dark); }
+.rm-dot.coral { background: var(--coral); }
+.rm-body h4 { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 4px; padding-top: 8px; }
+.rm-body p  { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+/* ── SPLIT ── */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+
+/* ── QUOTE ── */
+.blockquote {
+  background: var(--dark);
+  border-radius: 20px;
+  padding: 36px 40px;
+  margin: 36px 0 0;
+}
+.blockquote p {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 300;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.65;
+  font-style: italic;
+  margin: 0;
+}
+.blockquote p em { color: var(--teal); font-style: normal; font-weight: 500; }
+.bq-source { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 16px; }
+
+/* ── RISK TAG ── */
+.tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.tag { font-size: 11px; padding: 4px 12px; border-radius: 20px; font-weight: 500; }
+.tag-teal  { background: rgba(46,196,182,0.1); color: var(--teal2); border: 1px solid rgba(46,196,182,0.2); }
+.tag-coral { background: rgba(232,72,85,0.08); color: #A32020; border: 1px solid rgba(232,72,85,0.15); }
+.tag-amber { background: rgba(255,159,28,0.1); color: #854F0B; border: 1px solid rgba(255,159,28,0.2); }
+.tag-gray  { background: var(--surface2); color: var(--muted); border: 1px solid rgba(0,0,0,0.08); }
+
+/* ── SLIDE FINAL ── */
+.slide-final {
+  background: var(--dark);
+  color: white;
+}
+.final-title {
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.final-title strong { font-weight: 600; color: var(--teal); }
+
+/* ── DIVIDER ── */
+hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+hr.dark { border-top-color: rgba(255,255,255,0.07); }
+
+/* ── PROGRESS BAR ── */
+.progress {
+  position: fixed;
+  bottom: 0; left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0,0,0,0.06);
+  z-index: 100;
+}
+.progress-bar {
+  height: 100%;
+  background: var(--teal);
+  transition: width 0.4s ease;
+}
+
+/* ── NAV DOTS ── */
+.nav {
+  position: fixed;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 100;
+}
+.nav-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.18);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.nav-dot.active { background: var(--teal); transform: scale(1.5); }
+.nav-dot.light  { background: rgba(255,255,255,0.25); }
+.nav-dot.light.active { background: var(--teal); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .slide { padding: 48px 28px; min-height: auto; }
+  .grid2, .grid3, .grid4, .split, .compare { grid-template-columns: 1fr; }
+  .flow { flex-direction: column; }
+  .flow-arr { transform: rotate(90deg); align-self: center; }
+  .stat-row { flex-direction: column; }
+  .nav { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV DOTS -->
+<nav class="nav" id="nav"></nav>
+<div class="progress"><div class="progress-bar" id="prog"></div></div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 1 — CAPA
+═══════════════════════════════════════════ -->
+<section class="slide slide-cover" data-theme="dark">
+
+  <div class="app-badge">
+    <div class="app-icon">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 1.5C5 1.5 2.5 4 2.5 7c0 3.5 5.5 7.5 5.5 7.5s5.5-4 5.5-7.5c0-3-2.5-5.5-5.5-5.5z" fill="white" opacity="0.9"/>
+        <circle cx="8" cy="7" r="2" fill="#2EC4B6"/>
+      </svg>
+    </div>
+    <span>Caminho Seguro</span>
+  </div>
+
+  <h1 class="cover-title">Sua cidade,<br>seu trajeto,<br><strong>mais segurança.</strong></h1>
+  <p class="cover-sub">App que cruza sua rota com dados reais da SSP-SP — para informar, não amedrontar.</p>
+
+  <div class="cover-pills">
+    <span class="pill">iOS + Android</span>
+    <span class="pill">Dados SSP-SP</span>
+    <span class="pill">São Paulo · 2026</span>
+    <span class="pill">PRD v1.0</span>
+  </div>
+
+  <span class="slide-num">01 / 09</span>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 2 — O PROBLEMA
+═══════════════════════════════════════════ -->
+<section class="slide slide-light" data-theme="light">
+
+  <div class="stag">O problema</div>
+  <h2 class="slide-title">A pergunta que todo<br>paulistano já fez — <em>sem resposta de qualidade</em></h2>
+  <p class="slide-lead">No r/saopaulo, moradores publicam diariamente prints de rotas no Google Maps perguntando se aquele caminho é seguro. A resposta: opiniões sem nenhum dado.</p>
+
+  <div class="grid2">
+    <div>
+      <div class="reddit-frame">
+        <div class="reddit-label"><span class="reddit-dot"></span> r/saopaulo · há 4 dias</div>
+        <div class="reddit-post-title">"Esse caminho no Brás é seguro?"</div>
+        <div class="reddit-post-body">Preciso ir ao SENAI. Fiz esse trajeto saindo do metrô. O que acham? <em>De sábado é pior?</em></div>
+        <div class="reddit-img">
+          <img src="/mnt/user-data/uploads/1774200617941_image.png" alt="Post Reddit com rota no Brás">
+        </div>
+        <div class="reddit-insight">O usuário já traçou a rota. Só faltava a camada de dados.</div>
+      </div>
+    </div>
+    <div>
+      <div class="reddit-frame">
+        <div class="reddit-label"><span class="reddit-dot"></span> r/saopaulo · 9 meses atrás</div>
+        <div class="reddit-post-title">"É um local perigoso atualmente AINDA?"</div>
+        <div class="reddit-post-body">R. Pedro Vicente, 625 — Canindé. Penso em estudar aqui no turno noturno, sou de outra cidade.</div>
+        <div class="reddit-img">
+          <img src="/mnt/user-data/uploads/1774200636180_image.png" alt="Post Reddit sobre Canindé">
+        </div>
+        <div class="reddit-insight">"AINDA" em maiúsculo: sabe que o cenário muda, mas não tem como verificar. Conta foi deletada depois.</div>
+      </div>
+    </div>
+  </div>
+
+  <span class="slide-num-dark">02 / 09</span>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 3 — A OPORTUNIDADE
+═══════════════════════════════════════════ -->
+<section class="slide slide-surface" data-theme="light">
+
+  <div class="stag">A oportunidade</div>
+  <h2 class="slide-title">Os dados existem.<br><strong>Só não chegam às pessoas.</strong></h2>
+  <p class="slide-lead">A SSP-SP publica mensalmente todos os boletins de ocorrência por tipo, bairro e período. São dados públicos — mas estão em PDFs e tabelas que ninguém consulta antes de sair de casa.</p>
+
+  <div class="grid3">
+    <div class="card">
+      <div class="card-accent" style="background: var(--coral);"></div>
+      <h4>Informação de qualidade não chega ao cidadão</h4>
+      <p>Tabelas da SSP-SP são públicas mas inacessíveis. O cidadão recorre a opinião de estranhos no Reddit.</p>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background: var(--amber);"></div>
+      <h4>Apps existentes amplificam o medo</h4>
+      <p>Waze Alerts e grupos de WhatsApp funcionam por relatos anedóticos — sem contexto estatístico.</p>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background: var(--teal);"></div>
+      <h4>Outros riscos são completamente ignorados</h4>
+      <p>Alagamentos, acidentes e iluminação precária afetam tanto quanto o crime — mas nunca aparecem juntos.</p>
+    </div>
+  </div>
+
+  <div class="blockquote">
+    <p>A demanda já existe e é ativa. O problema não é criar um novo hábito — é substituir uma solução ruim (<em>opiniões anedóticas</em>) por uma melhor (<em>dados contextualizados da SSP-SP</em>).</p>
+  </div>
+
+  <span class="slide-num-dark">03 / 09</span>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 4 — A SOLUÇÃO
+═══════════════════════════════════════════ -->
+<section class="slide slide-light" data-theme="light">
+
+  <div class="stag">A solução</div>
+  <h2 class="slide-title">Você traça a rota.<br><em>A gente traz o contexto.</em></h2>
+  <p class="slide-lead">Em 4 passos, você sai de casa com informação real — não com ansiedade de desconhecidos.</p>
+
+  <div class="flow">
+    <div class="flow-step">
+      <div class="fi">📍</div>
+      <div class="fn">Passo 1</div>
+      <div class="fl">Origem & destino</div>
+      <div class="fs">Com horário — agora ou programado</div>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-step">
+      <div class="fi">📊</div>
+      <div class="fn">Passo 2</div>
+      <div class="fl">Análise SSP-SP</div>
+      <div class="fs">Por tipo, período e dia da semana</div>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-step">
+      <div class="fi">🗺️</div>
+      <div class="fn">Passo 3</div>
+      <div class="fl">Rotas com contexto</div>
+      <div class="fs">Até 3 alternativas com pontos de atenção e apoio</div>
+    </div>
+    <div class="flow-arr">→</div>
+    <div class="flow-step" style="border-color: rgba(46,196,182,0.35);">
+      <div class="fi">✓</div>
+      <div class="fn">Passo 4</div>
+      <div class="fl">Decisão sua</div>
+      <div class="fs">O app informa — nunca decide por você</div>
+    </div>
+  </div>
+
+  <div class="compare">
+    <div class="compare-col compare-bad">
+      <div class="compare-label"><span class="compare-dot"></span>Hoje, no Reddit</div>
+      <div class="compare-item"><span class="ci">✕</span> Opiniões sem base em dados</div>
+      <div class="compare-item"><span class="ci">✕</span> Informação potencialmente desatualizada</div>
+      <div class="compare-item"><span class="ci">✕</span> Sem filtro por horário ou dia</div>
+      <div class="compare-item"><span class="ci">✕</span> Amplifica casos extremos</div>
+    </div>
+    <div class="compare-col compare-good">
+      <div class="compare-label"><span class="compare-dot"></span>Com o Caminho Seguro</div>
+      <div class="compare-item"><span class="ci">✓</span> Dados reais da SSP-SP</div>
+      <div class="compare-item"><span class="ci">✓</span> Atualizado mensalmente</div>
+      <div class="compare-item"><span class="ci">✓</span> Filtrado por horário e dia da semana</div>
+      <div class="compare-item"><span class="ci">✓</span> Contexto comparativo, não alarmismo</div>
+    </div>
+  </div>
+
+  <span class="slide-num-dark">04 / 09</span>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 5 — ALÉM DO CRIME
+═══════════════════════════════════════════ -->
+<section class="slide slide-surface" data-theme="light">
+
+  <div class="stag">Diferencial</div>
+  <h2 class="slide-title">Segurança é mais<br><strong>do que crime.</strong></h2>
+  <p class="slide-lead">O app integra múltiplas fontes de risco para dar uma visão completa do seu percurso — seja você pedestre, ciclista ou motorista.</p>
+
+  <div class="grid4">
+    <div class="card">
+      <div class="card-accent" style="background: var(--coral);"></div>
+      <h4>Segurança pública</h4>
+      <p>Ocorrências por tipo, bairro e período do dia via SSP-SP.</p>
+      <div class="tag-row"><span class="tag tag-coral">SSP-SP</span></div>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background: #378ADD;"></div>
+      <h4>Alagamentos</h4>
+      <p>Pontos históricos de inundação e alertas em tempo real.</p>
+      <div class="tag-row"><span class="tag tag-gray">CGE · Defesa Civil</span></div>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background: var(--amber);"></div>
+      <h4>Trânsito & obras</h4>
+      <p>Cruzamentos críticos, trechos perigosos e obras em andamento.</p>
+      <div class="tag-row"><span class="tag tag-amber">CET-SP · SIURB</span></div>
+    </div>
+    <div class="card">
+      <div class="card-accent" style="background: var(--teal);"></div>
+      <h4>Pontos de apoio</h4>
+      <p>UPAs, delegacias, farmácias 24h e iluminação ao longo da rota.</p>
+      <div class="tag-row"><span class="tag tag-teal">ILUME · PMSP</span></div>
+    </div>
+  </div>
+
+  <span class="slide-num-dark">05 / 09</span>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 6 — PRINCÍPIOS
+═══════════════════════════════════════════ -->
+<section class="slide slide-light" data-theme="light">
+
+  <div class="stag">Design ético</div>
+  <h2 class="slide-title">Construído para<br><em>não gerar medo.</em></h2>
+  <p class="slide-lead">A principal decisão de design não é técnica — é ética. Cada funcionalidade é avaliada contra o risco de produzir isolamento ou paralisia.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="pnum">01</div>
+      <div>
+        <h4>Contexto, não alarme</h4>
+        <p>Todo dado vem com referência: variação temporal, comparativo geográfico, tipo de ocorrência. Nunca um número isolado.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="pnum">02</div>
+      <div>
+        <h4>Silêncio como default</h4>
+        <p>O app fala quando tem algo relevante para aquela rota específica. Sem bombardear com notificações desnecessárias.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="pnum">03</div>
+      <div>
+        <h4>Informar, não decidir</h4>
+        <p>O app nunca diz "vá por aqui" ou "evite aquele bairro". Apresenta dados e opções — a decisão é sempre do usuário.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="pnum">04</div>
+      <div>
+        <h4>Mostrar o positivo também</h4>
+        <p>Trechos bem iluminados, áreas movimentadas, pontos de apoio — o app celebra o que funciona na cidade.</p>
+      </div>
+    </div>
+  </div>
+
+  <span class="slide-num-dark">06 / 09</span>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 7 — MÉTRICAS
+═══════════════════════════════════════════ -->
+<section class="slide slide-surface" data-theme="light">
+
+  <div class="stag">Sucesso</div>
+  <h2 class="slide-title">Medimos bem-estar,<br><strong>não engajamento.</strong></h2>
+  <p class="slide-lead">Tempo de sessão longo pode indicar ansiedade, não valor. Volume de alertas alto pode significar ruído, não utilidade.</p>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="sn">70<em>%</em></div>
+      <div class="sd">Usuários que se sentem "mais informados, não mais ansiosos" após usar o app</div>
+    </div>
+    <div class="stat">
+      <div class="sn">&lt;15<em>%</em></div>
+      <div class="sd">Taxa máxima de abandono após ver dados de ocorrências — sinal de reação de pânico</div>
+    </div>
+    <div class="stat">
+      <div class="sn">4.2<em>★</em></div>
+      <div class="sd">Nota mínima nas lojas, avaliada em reviews que mencionam "medo" ou "ansiedade"</div>
+    </div>
+    <div class="stat" style="background: var(--teal);">
+      <div class="sn" style="color: var(--dark);">3<em style="color: var(--dark); opacity:0.5;">x</em></div>
+      <div class="sd" style="color: rgba(26,26,46,0.6);">Rotas por usuário ativo semanal — uso regular, não compulsivo</div>
+    </div>
+  </div>
+
+  <span class="slide-num-dark">07 / 09</span>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 8 — ROADMAP
+═══════════════════════════════════════════ -->
+<section class="slide slide-light" data-theme="light">
+
+  <div class="stag">Roadmap</div>
+  <h2 class="slide-title">12 meses para<br><strong>chegar ao mercado.</strong></h2>
+  <p class="slide-lead">Começamos pela validação ética — antes de qualquer linha de código.</p>
+
+  <div class="roadmap">
+    <div class="rm-item">
+      <div class="rm-dot">M0</div>
+      <div class="rm-body">
+        <h4>Meses 0–2 · Validação e fundação ética</h4>
+        <p>Pesquisa qualitativa com 30 usuários. Política de privacidade com especialistas em LGPD. Mapeamento das APIs públicas. Formação do comitê ético — incluindo vozes da periferia.</p>
+      </div>
+    </div>
+    <div class="rm-item">
+      <div class="rm-dot coral" style="background: var(--coral);">M1</div>
+      <div class="rm-body">
+        <h4>Meses 2–5 · MVP fechado</h4>
+        <p>Pipeline SSP-SP. Interface de rota com contexto. Rotas alternativas por dados. Teste fechado com 200 usuários — acompanhamento de impacto na percepção de segurança.</p>
+      </div>
+    </div>
+    <div class="rm-item">
+      <div class="rm-dot teal">M2</div>
+      <div class="rm-body">
+        <h4>Meses 5–8 · Expansão de riscos</h4>
+        <p>Integração CET, Defesa Civil e SIURB. Modo navegação turn-by-turn. Diferenciação por modal. Lançamento público.</p>
+      </div>
+    </div>
+    <div class="rm-item">
+      <div class="rm-dot" style="background: var(--muted);">M3</div>
+      <div class="rm-body">
+        <h4>Meses 8–12 · Maturidade</h4>
+        <p>Modo Tranquilidade. Integração SPTrans e CPTM. Expansão para Grande SP. Relatório público anual de impacto ético.</p>
+      </div>
+    </div>
+  </div>
+
+  <span class="slide-num-dark">08 / 09</span>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 9 — ENCERRAMENTO
+═══════════════════════════════════════════ -->
+<section class="slide slide-final" data-theme="dark">
+
+  <div class="app-badge" style="margin-bottom: 48px;">
+    <div class="app-icon">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 1.5C5 1.5 2.5 4 2.5 7c0 3.5 5.5 7.5 5.5 7.5s5.5-4 5.5-7.5c0-3-2.5-5.5-5.5-5.5z" fill="white" opacity="0.9"/>
+        <circle cx="8" cy="7" r="2" fill="#2EC4B6"/>
+      </svg>
+    </div>
+    <span>Caminho Seguro</span>
+  </div>
+
+  <h2 class="final-title">Sua cidade,<br>seu trajeto,<br><strong>mais segurança.</strong></h2>
+
+  <hr class="dark" style="max-width: 400px; margin: 32px 0;">
+
+  <p style="font-size: 16px; color: rgba(255,255,255,0.4); font-weight: 300; max-width: 500px; line-height: 1.7;">
+    App mobile que substitui o "alguém sabe se essa rua é perigosa?" do Reddit por dados reais da SSP-SP — contextualizados, comparativos e entregues sem alarmismo.
+  </p>
+
+  <div style="margin-top: 40px; display: flex; gap: 12px; flex-wrap: wrap;">
+    <span class="pill" style="border-color: rgba(46,196,182,0.3); color: var(--teal);">ssp.sp.gov.br/estatistica</span>
+    <span class="pill">PRD v1.0 · Março 2026</span>
+  </div>
+
+  <span class="slide-num">09 / 09</span>
+</section>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const nav = document.getElementById('nav');
+const prog = document.getElementById('prog');
+
+slides.forEach((s, i) => {
+  const dot = document.createElement('div');
+  const theme = s.dataset.theme;
+  dot.className = 'nav-dot' + (theme === 'dark' ? ' light' : '');
+  dot.onclick = () => s.scrollIntoView({ behavior: 'smooth' });
+  nav.appendChild(dot);
+});
+
+const dots = nav.querySelectorAll('.nav-dot');
+
+function update() {
+  const wh = window.innerHeight;
+  const total = document.body.scrollHeight - wh;
+  const pct = Math.round((window.scrollY / total) * 100);
+  prog.style.width = pct + '%';
+
+  let active = 0;
+  slides.forEach((s, i) => {
+    const r = s.getBoundingClientRect();
+    if (r.top <= wh / 2) active = i;
+  });
+
+  dots.forEach((d, i) => {
+    const theme = slides[i].dataset.theme;
+    d.className = 'nav-dot' + (theme === 'dark' ? ' light' : '') + (i === active ? ' active' : '');
+  });
+}
+
+window.addEventListener('scroll', update, { passive: true });
+update();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400;1,600&amp;family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=DM+Serif+Display:ital@0;1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1A1A2E",
+              "secondary": "#E84855",
+              "tertiary": "#2EC4B6",
+              "background-light": "#f6f6f7",
+              "background-dark": "#16161c",
+            },
+            fontFamily: {
+              "headline": ["DM Serif Display", "serif"],
+              "body": ["DM Sans", "sans-serif"],
+              "label": ["DM Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }</script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-search {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+      }
+      body {
+        background-color: #f9f9fb;
+        color: #1a1c1d;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body antialiased">
+<!-- TopAppBar -->
+<header class="bg-[#f9f9fb] dark:bg-slate-950 fixed top-0 z-50 w-full">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#1A1A2E] dark:text-slate-100 text-2xl" data-icon="accessibility_new">accessibility_new</span>
+<h1 class="font-headline text-2xl font-semibold italic text-primary dark:text-white tracking-tight">Caminho Seguro</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-opacity scale-95 active:duration-150">
+<span class="material-symbols-outlined text-slate-400" data-icon="notifications">notifications</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-12">
+<h2 class="font-headline text-4xl md:text-5xl lg:text-6xl text-primary-container leading-tight mb-8">
+                Para onde vamos agora?
+            </h2>
+<!-- Search Bar (Glassmorphism) -->
+<div class="bg-white/80 backdrop-blur-xl p-6 rounded-2xl shadow-[0_12px_40px_0_rgba(26,28,29,0.06)] mb-8 space-y-4">
+<div class="flex items-center bg-slate-100 rounded-xl px-4 py-1">
+<span class="material-symbols-outlined text-slate-400 mr-3 text-xl" data-icon="my_location">my_location</span>
+<div class="flex-1">
+<p class="text-[10px] font-bold uppercase text-slate-500 tracking-wider pt-2">De:</p>
+<input class="w-full bg-transparent border-none focus:ring-0 text-primary font-medium p-0 pb-2 text-sm" type="text" value="Localização atual"/>
+</div>
+</div>
+<div class="flex items-center bg-slate-100 rounded-xl px-4 py-1">
+<span class="material-symbols-outlined text-slate-400 mr-3 text-xl" data-icon="location_on">location_on</span>
+<div class="flex-1">
+<p class="text-[10px] font-bold uppercase text-slate-500 tracking-wider pt-2">Para:</p>
+<input class="w-full bg-transparent border-none focus:ring-0 text-primary font-medium p-0 pb-2 text-sm" placeholder="Digite seu destino" type="text"/>
+</div>
+</div>
+<button class="w-full bg-primary text-white px-6 py-4 rounded-xl font-bold text-base flex justify-center items-center gap-2 hover:opacity-90 transition-all">
+        Traçar Rota
+    </button>
+</div>
+<!-- Transport Selectors (Asymmetric Grid) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<button class="flex flex-col items-center justify-center p-6 bg-[#2EC4B6] text-white rounded-xl hover:opacity-90 transition-all group">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-3xl mb-2" data-icon="directions_walk">directions_walk</span>
+<span class="font-bold text-xs uppercase tracking-widest text-on-tertiary-fixed">Andar</span>
+</button>
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl mb-2" data-icon="directions_bike">directions_bike</span>
+<span class="font-bold text-xs uppercase tracking-widest text-on-surface-variant">Bicicleta</span>
+</button>
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl mb-2" data-icon="directions_bus">directions_bus</span>
+<span class="font-bold text-xs uppercase tracking-widest text-on-surface-variant">Ônibus</span>
+</button>
+<button class="flex flex-col items-center justify-center p-6 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-all group">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl mb-2" data-icon="directions_car">directions_car</span>
+<span class="font-bold text-xs uppercase tracking-widest text-on-surface-variant">Carro</span>
+</button>
+</div>
+</section>
+<!-- Map Quick Preview -->
+<section class="mb-12">
+<div class="relative w-full h-64 rounded-xl overflow-hidden shadow-sm">
+<img alt="Mapa Urbano" class="w-full h-full object-cover grayscale opacity-40" data-alt="Mapa abstrato de cidade com rotas coloridas" data-location="São Paulo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhGfKzIFJ4G08eLzx23rEmbd9CJcoOJ7RW2q8G1ArSHfeJt_a9B0iegObKDX24Hks_zVl5yssdk8u3g0P3kLZMiNgAGZd_Zb-koCGjLIBZvVdmmkUHk_w4XRh-R58gLjiufrhEzBwtTjqUHEosDDj1SszYE_-4cwdRpliOYYN-P6IHplSo2q544HlLWWlTCNwTC9n26MB--jfqI_s3ShMiMYsTiG_5pyqQTTDf1SyxaMMMZbpcbdURhvghGi5RscJbu51c6rNUcIkY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<div class="bg-surface-container-lowest/90 backdrop-blur px-4 py-2 rounded-full flex items-center gap-2">
+<div class="w-2 h-2 bg-tertiary-fixed-dim rounded-full animate-pulse"></div>
+<span class="text-xs font-bold uppercase tracking-tighter">Sua localização atual: Pinheiros</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Routes (Editorial Layout) -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h3 class="font-headline text-2xl text-primary-container italic">Rotas Recentes</h3>
+<p class="text-on-surface-variant text-sm font-medium">Histórico de deslocamentos protegidos</p>
+</div>
+<button class="text-primary-container font-bold text-xs uppercase border-b-2 border-primary-container pb-1">Ver Tudo</button>
+</div>
+<div class="space-y-4">
+<!-- Route Card 1 -->
+<div class="group flex items-center justify-between p-6 bg-surface-container-low rounded-xl hover:bg-surface-container-lowest hover:shadow-[0_12px_40px_0_rgba(26,28,29,0.06)] transition-all duration-300">
+<div class="flex items-center gap-6">
+<div class="p-3 bg-surface-container-highest rounded-full text-primary-container">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</div>
+<div>
+<h4 class="font-bold text-lg text-primary-container">Casa → Trabalho</h4>
+<p class="text-on-surface-variant text-sm">Fluxo habitual</p>
+</div>
+</div>
+<div class="flex items-center gap-2 px-4 py-1.5 bg-[#2EC4B6]/10 text-[#2EC4B6] rounded-full">
+<span class="material-symbols-outlined text-xs" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Rota Segura</span>
+</div>
+</div>
+<!-- Route Card 2 -->
+<div class="group flex items-center justify-between p-6 bg-surface-container-low rounded-xl hover:bg-surface-container-lowest hover:shadow-[0_12px_40px_0_rgba(26,28,29,0.06)] transition-all duration-300">
+<div class="flex items-center gap-6">
+<div class="p-3 bg-surface-container-highest rounded-full text-primary-container">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+</div>
+<div>
+<h4 class="font-bold text-lg text-primary-container">Faculdade → Metrô</h4>
+<p class="text-on-surface-variant text-sm">Atenção em 1 trecho</p>
+</div>
+</div>
+<div class="flex items-center gap-2 px-4 py-1.5 bg-[#E84855]/10 text-[#E84855] rounded-full">
+<span class="material-symbols-outlined text-xs" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Alerta Baixo</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Footnote -->
+<footer class="mt-16 text-center">
+<p class="text-primary/60 text-[10px] font-bold uppercase tracking-[0.2em] py-8">
+                Dados da SSP-SP com atualização mensal
+            </p>
+</footer>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-[#1A1A2E]/80 backdrop-blur-xl rounded-t-[3rem] shadow-[0_-12px_40px_0_rgba(26,28,29,0.06)]">
+<a class="flex flex-col items-center justify-center bg-primary text-white rounded-full px-5 py-2 transition-all duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-wider">Início</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-[#ff5964] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-wider">Salvos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-[#ff5964] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-wider">Alertas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-[#ff5964] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-wider">Perfil</span>
+</a>
+</nav>
+</body></html>
