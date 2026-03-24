@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Caminho Seguro - Seleção de Rota</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400;1,600&amp;family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary": "#b62135",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e2e2e4",
+                        "on-primary-container": "#83829b",
+                        "surface-variant": "#e2e2e4",
+                        "outline-variant": "#c8c5cd",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#600012",
+                        "secondary-container": "#ff5964",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#1a1a2e",
+                        "tertiary-fixed": "#70f8e8",
+                        "on-primary-fixed-variant": "#45455b",
+                        "on-tertiary-fixed": "#00201d",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2f3132",
+                        "secondary-fixed": "#ffdad9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#920021",
+                        "surface": "#f9f9fb",
+                        "tertiary": "#000202",
+                        "surface-container-high": "#e8e8ea",
+                        "tertiary-container": "#00211e",
+                        "surface-container": "#eeeef0",
+                        "outline": "#78767d",
+                        "inverse-primary": "#c6c4df",
+                        "surface-tint": "#5d5c74",
+                        "on-background": "#1a1c1d",
+                        "primary": "#00000b",
+                        "tertiary-fixed-dim": "#4fdbcc",
+                        "inverse-on-surface": "#f0f0f2",
+                        "primary-fixed-dim": "#c6c4df",
+                        "primary-container": "#1a1a2e",
+                        "surface-dim": "#d9dadc",
+                        "on-tertiary-fixed-variant": "#005049",
+                        "on-secondary-fixed": "#400009",
+                        "surface-container-low": "#f3f3f5",
+                        "surface-bright": "#f9f9fb",
+                        "on-tertiary-container": "#009589",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#e2e0fc",
+                        "secondary-fixed-dim": "#ffb3b3",
+                        "on-surface": "#1a1c1d",
+                        "on-error-container": "#93000a",
+                        "background": "#f9f9fb",
+                        "on-surface-variant": "#47464c"
+                    },
+                    fontFamily: {
+                        "headline": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9f9fb;
+            font-family: 'Manrope', sans-serif;
+            color: #1a1c1d;
+        }
+        .editorial-shadow {
+            box-shadow: 0 12px 40px 0 rgba(26, 28, 29, 0.06);
+        }
+        .map-gradient-overlay {
+            background: linear-gradient(to bottom, rgba(26, 26, 46, 0) 60%, #f9f9fb 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col pb-24">
+<!-- TopAppBar -->
+<header class="bg-[#f9f9fb] dark:bg-slate-950 fixed top-0 left-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#1A1A2E] dark:text-slate-100" data-icon="accessibility_new">accessibility_new</span>
+<h1 class="font-['Newsreader'] text-2xl font-semibold italic text-[#1A1A2E] dark:text-white tracking-tight">Caminho Seguro</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-400 hover:opacity-80 transition-opacity cursor-pointer" data-icon="search">search</span>
+<span class="material-symbols-outlined text-slate-400 hover:opacity-80 transition-opacity cursor-pointer" data-icon="more_vert">more_vert</span>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-16">
+<!-- Map Section (40% Viewport Height) -->
+<section class="relative h-[353px] w-full overflow-hidden">
+<img class="w-full h-full object-cover grayscale invert contrast-125 brightness-50" data-alt="Dark aesthetic city map with navigation routes" data-location="São Paulo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA95RKueYdTFpiZfdyBs1WggH3fCE3jgJDOeohNxN7Dm9fU3tavJWUvueMO9a2rGm5zWBuecGg-Ay8zpe-6Ep0CbC5-QU6TlOoAcgEPXynd2p2MOeien9WSQH62CDKd_DK7PnjyU0dOWNNby_5tre8Xow_zAPy8jRCpVJDO6T25PNlQIJG7cUpEKR27719wNFAThLAc926cuQqaPiNWBGqryPubE3309dal8mqtnnG-t5MkwkyQGe4CaY-utAj9PzTOqDNm1dN-gz4O"/>
+<div class="absolute inset-0 map-gradient-overlay"></div>
+<!-- Route Visualizer (Abstracted) -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-24">
+<svg class="w-full h-full drop-shadow-2xl" viewbox="0 0 400 100">
+<path class="opacity-80" d="M10,50 Q100,20 200,50 T390,50" fill="none" stroke="#70f8e8" stroke-linecap="round" stroke-width="6"></path>
+<circle cx="10" cy="50" fill="#70f8e8" r="6"></circle>
+<circle cx="390" cy="50" fill="#ff5964" r="8"></circle>
+</svg>
+</div>
+</section>
+<!-- Route Selection Content -->
+<section class="px-6 -mt-12 relative z-10 max-w-2xl mx-auto">
+<div class="mb-8">
+<h2 class="font-headline text-3xl font-semibold text-primary mb-2">Selecione seu trajeto</h2>
+<p class="font-body text-on-primary-container text-sm">Analisamos a segurança em tempo real para você.</p>
+</div>
+<!-- Route Options Stack -->
+<div class="space-y-6">
+<!-- Recommended Route -->
+<div class="bg-surface-container-lowest rounded-xl p-6 editorial-shadow border-l-4 border-tertiary-fixed-dim transition-all hover:scale-[1.01] active:scale-95 duration-150">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="font-label text-[10px] font-bold uppercase tracking-widest text-on-tertiary-container bg-tertiary-fixed px-3 py-1 rounded-full">Recomendado</span>
+<h3 class="font-body text-xl font-extrabold text-primary-container mt-3">Via Consolação</h3>
+</div>
+<div class="text-right">
+<span class="font-body font-bold text-lg text-primary">12 min</span>
+<p class="font-label text-xs text-on-primary-container">850 metros</p>
+</div>
+</div>
+<div class="flex items-center gap-2 text-on-tertiary-container mb-6">
+<span class="material-symbols-outlined text-lg" data-icon="verified_user">verified_user</span>
+<span class="font-body text-sm font-medium italic">Menor histórico de ocorrências</span>
+</div>
+<button class="w-full py-4 rounded-xl border-2 border-primary-container text-primary-container font-body font-bold text-sm tracking-wide hover:bg-primary-container hover:text-white transition-all uppercase">
+                        Selecionar
+                    </button>
+</div>
+<!-- Busy Flow Route -->
+<div class="bg-surface-container-low rounded-xl p-6 transition-all hover:bg-surface-container-highest">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-body text-xl font-bold text-primary-container">Alameda Santos</h3>
+</div>
+<div class="text-right">
+<span class="font-body font-bold text-lg text-primary">15 min</span>
+<p class="font-label text-xs text-on-primary-container">1.2 km</p>
+</div>
+</div>
+<div class="flex items-center gap-2 text-on-primary-container mb-6"><span class="material-symbols-outlined text-lg" data-icon="history">history</span><span class="font-body text-sm">Histórico habitual para o período</span></div>
+<button class="w-full py-4 rounded-xl border-2 border-outline-variant text-on-surface-variant font-body font-bold text-sm tracking-wide hover:border-primary-container hover:text-primary-container transition-all uppercase">
+                        Selecionar
+                    </button>
+</div>
+<!-- Fast but Alert Route -->
+<div class="bg-surface-container-low rounded-xl p-6 transition-all hover:bg-surface-container-highest">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-body text-xl font-bold text-primary-container">Rua Augusta</h3>
+</div>
+<div class="text-right">
+<span class="font-body font-bold text-lg text-primary">10 min</span>
+<p class="font-label text-xs text-on-primary-container">700 metros</p>
+</div>
+</div>
+<div class="flex items-center gap-2 text-secondary mb-6"><span class="material-symbols-outlined text-lg" data-icon="warning">warning</span><span class="font-body text-sm">Atenção: aumento de ocorrências registradas recentemente</span></div>
+<button class="w-full py-4 rounded-xl border-2 border-outline-variant text-on-surface-variant font-body font-bold text-sm tracking-wide hover:border-primary-container hover:text-primary-container transition-all uppercase">
+                        Selecionar
+                    </button>
+</div>
+</div>
+<!-- SSP-SP Footnote -->
+<footer class="mt-16 mb-8 text-center">
+<p class="font-label text-[10px] text-on-primary-container uppercase tracking-widest opacity-60">
+                    Fonte de dados: SSP-SP Atualização Mensal (Abril 2024)
+                </p>
+</footer>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-[#1A1A2E]/80 backdrop-blur-xl rounded-t-[3rem] shadow-[0_-12px_40px_0_rgba(26,28,29,0.06)]">
+<a class="flex flex-col items-center justify-center bg-[#1A1A2E] dark:bg-[#70f8e8] text-white dark:text-[#1A1A2E] rounded-full px-5 py-2 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-wider mt-1">Início</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-[#ff5964] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-wider mt-1">Salvos</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-[#ff5964] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-wider mt-1">Alertas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-[#ff5964] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Manrope'] text-[10px] font-bold uppercase tracking-wider mt-1">Perfil</span>
+</a>
+</nav>
+</body></html>
